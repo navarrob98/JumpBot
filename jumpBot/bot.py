@@ -13,5 +13,5 @@ class Bot:
     def click(self):
         win32api.SetCursorPos((240,640))
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)
-        time.sleep(0.01)
+        time.sleep(.68)
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)

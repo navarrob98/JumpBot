@@ -1,6 +1,7 @@
 import numpy as np
-import win32gui, win32ui, win32con
-
+import win32gui
+import win32ui
+import win32con
 
 class WindowCapture:
 
@@ -26,15 +27,15 @@ class WindowCapture:
 
         # get the window size
         window_rect = win32gui.GetWindowRect(self.hwnd)
-        self.w = window_rect[2] - window_rect[0]-75
+        self.w = window_rect[2] - window_rect[0]-80
         self.h = window_rect[3] - window_rect[1]
 
         # account for the window border and titlebar and cut them off
-        border_pixels = 70
+        border_pixels = 125
         titlebar_pixels = 590
         self.w = self.w - (border_pixels * 2)
         self.h = self.h - titlebar_pixels - border_pixels-50
-        self.cropped_x = border_pixels
+        self.cropped_x = border_pixels-115
         self.cropped_y = titlebar_pixels
 
         # set the cropped coordinates offset so we can translate screenshot
