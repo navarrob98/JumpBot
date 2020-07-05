@@ -17,8 +17,11 @@ wincap = WindowCapture('BlueStacks')
 vision_pilar1 = Vision('pilar1.png')
 vision_pilar2 = Vision('pilar2.png')
 vision_pilar3 = Vision('pilar3.png')
-vision_pilar4 = Vision('pilar4.png')
+#vision_pilar4 = Vision('pilar4.png')
 vision_pilar5 = Vision('pilar5.png')
+vision_pilar6 = Vision('pilar6.png')
+vision_pilar7 = Vision('pilar7.png')
+vision_pilar62 = Vision('pilar62.png')
 
 loop_time = time()
 while(True):
@@ -28,18 +31,23 @@ while(True):
     points_1 = []
     points_2 = []
     points_3 = []
-    points_4 = []        
+    #points_4 = []        
     points_5 = []
+    points_6 = []
+    points_7 = []
+    points_62 = []
     # display the processed image
     points_1 = vision_pilar1.find(screenshot, 0.5, 'rectangles')
     points_2 = vision_pilar2.find(screenshot, 0.5, 'rectangles')
     points_3 = vision_pilar3.find(screenshot, 0.5, 'rectangles')
-    points_4 = vision_pilar4.find(screenshot, 0.5, 'rectangles')
+    #points_4 = vision_pilar4.find(screenshot, 0.5)
     points_5 = vision_pilar5.find(screenshot, 0.5, 'rectangles')
-    #clicker is bugged
-    #if points_1 is not []:
-        #clicker = Bot()
-        #clicker.click()
+    points_6 = vision_pilar6.find(screenshot, 0.5, 'rectangles')
+    points_7 = vision_pilar7.find(screenshot, 0.5, 'rectangles')
+    points_62 = vision_pilar62.find(screenshot,0.8, 'rectangles')
+    if len(points_1) or len(points_2) or len(points_3) or len(points_5) or len(points_6) or len(points_7) or len(points_62):
+        clicker = Bot()
+        clicker.click()
         
 
 
