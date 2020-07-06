@@ -8,11 +8,11 @@ from bot import Bot
 
 # Change the working directory to the folder this script is in.
 # Doing this because I'll be putting the files from each video in their own folder on GitHub
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
+#os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 
 # initialize the WindowCapture class
-wincap = WindowCapture('BlueStacks')
+wincap = WindowCapture()
 # initialize the Vision class
 vision_pilar1 = Vision('pilar1.png')
 vision_pilar2 = Vision('pilar2.png')
@@ -21,7 +21,8 @@ vision_pilar3 = Vision('pilar3.png')
 vision_pilar5 = Vision('pilar5.png')
 vision_pilar6 = Vision('pilar6.png')
 vision_pilar7 = Vision('pilar7.png')
-vision_pilar62 = Vision('pilar62.png')
+#vision_pilar62 = Vision('pilar62.png')
+vision_pilarPr = Vision('pilarpr.png')
 
 loop_time = time()
 while(True):
@@ -35,20 +36,24 @@ while(True):
     points_5 = []
     points_6 = []
     points_7 = []
-    points_62 = []
+    #points_62 = []
+    points_pr =[]
     # display the processed image
-    points_1 = vision_pilar1.find(screenshot, 0.5, 'rectangles')
-    points_2 = vision_pilar2.find(screenshot, 0.5, 'rectangles')
-    points_3 = vision_pilar3.find(screenshot, 0.5, 'rectangles')
+    points_1 = vision_pilar1.find(screenshot, 0.45, 'rectangles')
+    points_2 = vision_pilar2.find(screenshot, 0.6, 'rectangles')
+    points_3 = vision_pilar3.find(screenshot, 0.6, 'rectangles')
     #points_4 = vision_pilar4.find(screenshot, 0.5)
-    points_5 = vision_pilar5.find(screenshot, 0.5, 'rectangles')
-    points_6 = vision_pilar6.find(screenshot, 0.5, 'rectangles')
-    points_7 = vision_pilar7.find(screenshot, 0.5, 'rectangles')
-    points_62 = vision_pilar62.find(screenshot,0.8, 'rectangles')
-    if len(points_1) or len(points_2) or len(points_3) or len(points_5) or len(points_6) or len(points_7) or len(points_62):
+    points_5 = vision_pilar5.find(screenshot, 0.6, 'rectangles')
+    points_6 = vision_pilar6.find(screenshot, 0.6, 'rectangles')
+    points_7 = vision_pilar7.find(screenshot, 0.6, 'rectangles')
+    points_pr = vision_pilarPr.find(screenshot, 0.69, 'rectangles')
+    #points_62 = vision_pilar62.find(screenshot,0.5, 'rectangles')
+    if len(points_pr):
+        print('pilar prohibido')
+    elif len(points_1) or len(points_2) or len(points_3) or len(points_5) or len(points_6) or len(points_7):
         clicker = Bot()
         clicker.click()
-        
+    
 
 
     # debug the loop rate
