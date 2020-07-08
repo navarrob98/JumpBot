@@ -74,15 +74,11 @@ class WindowCapture:
         # make image C_CONTIGUOUS to avoid errors that look like:
         #   File ... in draw_rectangles
         #   TypeError: an integer is required (got type tuple)
-        # see the discussion here:
-        # https://github.com/opencv/opencv/issues/14866#issuecomment-580207109
         img = np.ascontiguousarray(img)
 
         return img
 
     # find the name of the window you're interested in.
-    # once you have it, update window_capture()
-    # https://stackoverflow.com/questions/55547940/how-to-get-a-list-of-the-name-of-every-open-window
     @staticmethod
     def list_window_names():
         def winEnumHandler(hwnd, ctx):
