@@ -13,7 +13,7 @@ class Vision:
     # constructor
     def __init__(self, needle_img_path, method=cv.TM_CCOEFF_NORMED):
         # load the image we're trying to match
-        # https://docs.opencv.org/4.2.0/d4/da8/group__imgcodecs.html
+        
         self.needle_img = cv.imread(needle_img_path, cv.IMREAD_UNCHANGED)
 
         # Save the dimensions of the needle image
@@ -33,20 +33,13 @@ class Vision:
         locations = list(zip(*locations[::-1]))
         #print(locations)
 
-        # You'll notice a lot of overlapping rectangles get drawn. We can eliminate those redundant
         # locations by using groupRectangles().
-        # First we need to create the list of [x, y, w, h] rectangles
         rectangles = []
         for loc in locations:
             rect = [int(loc[0]), int(loc[1]), self.needle_w, self.needle_h]
             # Add every box to the list twice in order to retain single (non-overlapping) boxes
             rectangles.append(rect)
             rectangles.append(rect)
-        # Apply group rectangles.
-        # The groupThreshold parameter should usually be 1. If you put it at 0 then no grouping is
-        # done. If you put it at 2 then an object needs at least 3 overlapping rectangles to appear
-        # in the result. I've set eps to 0.5, which is:
-        # "Relative difference between sides of the rectangles to merge them into a group."
         rectangles, weights = cv.groupRectangles(rectangles, groupThreshold=1, eps=0.5)
         #print(rectangles)
         
